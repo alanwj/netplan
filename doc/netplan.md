@@ -190,10 +190,15 @@ Virtual devices
     device's MAC address as a unique identifier rather than a RFC4361-compliant
     Client ID. This has no effect when NetworkManager is used as a renderer.
 
- ``dhcp-options`` (mapping)
+ ``dhcp4-overrides`` (mapping)
 
- :  (networkd backend only) Additional DHCP options; see the
-    ``DHCP Options`` section below.
+ :  (networkd backend only) Overrides default DHCP behavior; see the
+    ``DHCP Overrides`` section below.
+
+ ``dhcp6-overrides`` (mapping)
+
+ :  (networkd backend only) Overrides default DHCP behavior; see the
+    ``DHCP Overrides`` section below.
 
 ``accept-ra`` (bool)
 
@@ -299,14 +304,18 @@ similar to ``gateway*``, and ``search:`` is a list of search domains.
 
 :   Configure policy routing for the device; see the ``Routing`` section below.
 
-## DHCP Options
-Several DHCP configuration options are supported via the ``networkd`` backend.
+## DHCP Overrides
+Several DHCP behavior overrides are available. Currently this is only supported
+via the ``networkd`` backend.
 
-These only have an effect if ``dhcp4`` or ``dhcp6`` is set to ``true``.
+These only have an effect if ``dhcp4`` or ``dhcp6`` is set to ``true``. If both
+``dhcp4`` and ``dhcp6`` are ``true``, the ``networkd`` backend requires that
+``dhcp4-overrides`` and ``dhcp6-overrides`` contain the same keys and values.
 
-``dhcp-options`` (mapping)
+``dhcp4-overrides`` (mapping)
+``dhcp6-overrides`` (mapping)
 
-:    The ``dhcp-options`` block defines additional DHCP configuration for the
+:    These blocks defines additional DHCP configuration for the
      ``networkd`` backend.
 
      ``use-dns`` (bool)
