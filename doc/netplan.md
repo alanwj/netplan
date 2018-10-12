@@ -308,15 +308,14 @@ similar to ``gateway*``, and ``search:`` is a list of search domains.
 Several DHCP behavior overrides are available. Currently this is only supported
 via the ``networkd`` backend.
 
-These only have an effect if ``dhcp4`` or ``dhcp6`` is set to ``true``. If both
-``dhcp4`` and ``dhcp6`` are ``true``, the ``networkd`` backend requires that
-``dhcp4-overrides`` and ``dhcp6-overrides`` contain the same keys and values.
+Overrides only have an effect if the corresponding ``dhcp4`` or ``dhcp6`` is
+set to ``true``.
 
-``dhcp4-overrides`` (mapping)
-``dhcp6-overrides`` (mapping)
+If both ``dhcp4`` and ``dhcp6`` are ``true``, the ``networkd`` backend requires
+that ``dhcp4-overrides`` and ``dhcp6-overrides`` contain the same keys and values.
 
-:    These blocks defines additional DHCP configuration for the
-     ``networkd`` backend.
+:    The ``dhcp4-overrides`` and ``dhcp6-overrides`` mappings override the
+     default DHCP behavior.
 
      ``use-dns`` (bool)
      :    Default: ``true``. When ``true``, the DNS servers received from the
